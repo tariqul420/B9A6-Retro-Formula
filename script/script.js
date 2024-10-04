@@ -16,7 +16,8 @@ const dataContainer = (posts) => {
       view_count,
       posted_time,
       image,
-      isActive
+      isActive,
+      id
     } = post;
     const card = document.createElement("div");
     card.className = "bg-gray-200 w-[48.25rem] rounded-2xl p-8 flex gap-8";
@@ -26,7 +27,7 @@ const dataContainer = (posts) => {
               <div class="w-[72px] h-[72px] bg-white rounded-3xl">
               <img class="h-full w-full rounded-3xl" src=${image}>
               </div>
-              <div class="w-4 h-4 ${isActive ? 'bg-emerald-500' : 'bg-red-500'} rounded-full absolute top-0 right-0"></div>
+              <div class="w-4 h-4 ${isActive ? "bg-emerald-500" : "bg-red-500"} rounded-full absolute top-0 right-0"></div>
             </div>
 
             <div class="space-y-4">
@@ -55,10 +56,28 @@ const dataContainer = (posts) => {
 };
 
 let counts = 0;
-const btnClick = () =>{
-    counts++
-    const count = document.getElementById('count')
-    count.innerText = counts;
-}
+const btnClick = async () => {
+  counts++;
+  const titleContainer = document.getElementById("title-container");
+  const count = document.getElementById("count");
+  count.innerText = counts;
+
+  titleContainer.innerHTML = '';
+
+  const link = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
+  const data = await link.json();
+  const titleContent = data["posts"];
+
+  titleContent.map((item) => {
+    const card = document.createElement("div");
+    card.className = "flex p-4 bg-white rounded-xl";
+    card.innerHTML = `
+    <h2 class="text-text-primary font-black text-lg">10 Kids Unaware of Their Halloween Costume</h2>
+    <p class="text-text-primary font-black text-lg">icon</p>
+    `;
+
+    titleContainer.append(card)
+  });
+};
 
 allPost();
