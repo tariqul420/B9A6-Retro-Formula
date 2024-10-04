@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    <!-- todo Font Awesome cdn -->
+    <script src="https://kit.fontawesome.com/07f60ceea9.js" crossorigin="anonymous"></script>
+
+    <!-- font family link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
+
+    <!-- tailwind & daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- faveIcon -->
+    <title>Retro - Forum</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "btn-primary": "rgb(121, 125, 252)",
+              "text-primary": "rgb(18, 19, 45)",
+              "text-secondary": "rgb(18, 19, 45,0.8)",
+              "text-finely": "rgb(18, 19, 45,0.6)",
+              background: "rgb(243, 243, 245)",
+            },
+            fontFamily: {
+              mulish: ["Mulish", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style type="text/tailwindcss">
+      .bg-img{
+        background: url(./images/bgbanner.png),rgb(18, 19, 45);
+      }
+      @layer utilities {
+        .nav-icon {
+          @apply w-10 h-10 flex justify-center items-center rounded-full bg-gray-200 border border-solid border-gray-300 cursor-pointer;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="font-mulish max-w-[90rem] mx-auto">
+    <!-- done nav bar section start hear -->
+    <nav class="w-11/12 mx-auto mt-8 flex justify-between">
+      <div>
+        <h2 class="text-4xl font-black text-text-primary">ReTro</h2>
+      </div>
+      <div class="flex justify-center items-center gap-6">
+        <p><i class="fa-solid fa-house nav-icon"></i></p>
+        <p><i class="fa-solid fa-pen nav-icon"></i></p>
+        <p><i class="fa-solid fa-user-plus nav-icon"></i></p>
+        <p><i class="fa-solid fa-flag nav-icon"></i></p>
+        <button class="btn btn-wide w-36 rounded-full bg-btn-primary font-bold text-white text-xl">Sign In</button>
+      </div>
+    </nav>
+
+    <!-- todo header section start hear -->
+    <header class="bg-img w-11/12 mx-auto rounded-[32px] mt-8 p-16 flex items-center justify-between">
+      <div class="w-[50%] space-y-4">
+        <h1 class="text-white font-black text-6xl">Welcome to the <span class="bg-gradient-to-r from-[#797dfc] to-[#797dfc80] text-transparent bg-clip-text">ReTro</span> Forum</h1>
+        <p class="text-[#ffffff80] font-medium text-xl">Share your favorite opinion and win and wp forum coffee mug!</p>
+        <label class="rounded-full input input-bordered flex items-center gap-2">
+          <input type="text" class="grow" placeholder="Search here anything" />
+          <button class="px-4 py-1 rounded-full bg-btn-primary font-bold text-white text-xl">Search</button>
+        </label>
+      </div>
+
+      <div class="w-[30%] p-12 text-text-secondary font-bold text-2xl bg-white rounded-[32px]">
+        <div class="flex items-center justify-between">
+          <p>Registered Users</p>
+          <p>01</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <p>Forum</p>
+          <p>05</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <p>Topics</p>
+          <p>01</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <p>Replies</p>
+          <p>01</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ! main section start hear -->
+    <main class="w-11/12 mx-auto mt-24">
+      <h2 class="text-text-primary font-black text-5xl text-center">Let’s Discuss</h2>
+      <p class="text-text-finely font-medium text-xl text-center w-3/6 mx-auto mt-8">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+
+      <section class="mt-12 flex justify-between">
+        <div id="user-container">
+          <div class="bg-gray-200 w-[48.25rem] rounded-2xl p-8 flex gap-8">
+            <div class="relative">
+              <div class="w-[72px] h-[72px] bg-white rounded-3xl"></div>
+              <div class="w-4 h-4 bg-red-500 rounded-full absolute top-0 right-0"></div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-8 text-finaly font-bold">
+                <p>#Music</p>
+                <p>Author : Awlad Hossain</p>
+              </div>
+              <h2 class="text-text-primary font-bold text-xl">10 Kids Unaware of Their Halloween Costume</h2>
+              <p class="text-text-secoundary font-semibold">It’s one thing to subject yourself to ha Halloween costume mishap because, hey that’s your prerogative</p>
+              <div class="border-t border-dashed border-text-primary"></div>
+              <div class="flex items-center justify-between gap-8">
+                <div class="flex items-center gap-8">
+                  <p class="text-text-finaly font-black"><i class="fa-solid fa-message"></i> 56</p>
+                <p class="text-text-finaly font-black"><i class="fa-solid fa-eye"></i> 56</p>
+                <p class="text-text-finaly font-black"><i class="fa-solid fa-clock"></i> 56</p>
+                </div>
+                <div>
+                  <button class="bg-btn-primary w-8 h-8 rounded-full"><i class="fa-solid fa-message text-white"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 w-[23.38rem] bg-gray-200 rounded-2xl">
+          <div class="flex items-center justify-between">
+            <h2 class="text-text-primary font-bold text-2xl">Title</h2>
+            <p class="text-text-finely font-black"><i class="fa-solid fa-check fa-shake text-text-primary text-2xl "></i> Mark as read (<span>0</span>)</p>
+          </div>
+
+          <div id="title-container">
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script/script.js"></script>
+  </body>
+</html>
