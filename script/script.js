@@ -1,5 +1,17 @@
-async function allPost() {
-  const link = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
+const search = ()=>{
+  const searchValue = document.getElementById('searchValue').value;
+
+  if(searchValue){
+    allPost(searchValue)
+  }else{
+    alert ('Search vlaid inpur')
+  }
+
+  document.getElementById('searchValue').value = ''
+};
+
+async function allPost(category) {
+  const link = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts${category?`?category=${category}`: ""}`);
   const data = await link.json();
   dataContainer(data["posts"]);
 }
@@ -17,7 +29,7 @@ const dataContainer = (posts) => {
       posted_time,
       image,
       isActive,
-      id
+      id,
     } = post;
     const card = document.createElement("div");
     card.className = "bg-gray-200 w-[48.25rem] rounded-2xl p-8 flex gap-8";
@@ -45,7 +57,7 @@ const dataContainer = (posts) => {
                 <p class="text-text-finely font-black"><i class="fa-solid fa-clock"></i> ${posted_time}</p>
                 </div>
                 <div>
-                  <button onclick="btnClick()" class="bg-btn-primary w-8 h-8 rounded-full"><i class="fa-solid fa-message text-white"></i></button>
+                  <button onclick="btnClick(${id})" class="bg-btn-primary w-8 h-8 rounded-full"><i class="fa-solid fa-message text-white"></i></button>
                 </div>
               </div>
             </div>
@@ -56,27 +68,26 @@ const dataContainer = (posts) => {
 };
 
 let counts = 0;
-const btnClick = async () => {
+const btnClick = async (postId) => {
   counts++;
   const titleContainer = document.getElementById("title-container");
   const count = document.getElementById("count");
   count.innerText = counts;
 
-  titleContainer.innerHTML = '';
-
   const link = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
   const data = await link.json();
   const titleContent = data["posts"];
 
-  titleContent.map((item) => {
-    const card = document.createElement("div");
-    card.className = "flex p-4 bg-white rounded-xl";
-    card.innerHTML = `
-    <h2 class="text-text-primary font-black text-lg">10 Kids Unaware of Their Halloween Costume</h2>
-    <p class="text-text-primary font-black text-lg">icon</p>
-    `;
-
-    titleContainer.append(card)
+  titleContent.forEach((post) => {
+    if (post.id === postId) {
+      const card = document.createElement("div");
+      card.className = "flex p-4 bg-white rounded-xl";
+      card.innerHTML = `
+        <h2 class="text-text-primary font-black text-lg">${post.title}</h2>
+        <p class="text-text-primary font-black text-lg flex justify-center items-center gap-4"><i class="fa-solid fa-eye"></i> ${post.view_count}</p>
+      `;
+      titleContainer.append(card);
+    }
   });
 };
 
